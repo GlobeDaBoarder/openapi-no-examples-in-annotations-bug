@@ -1,0 +1,75 @@
+openapi: 3.0.3
+info:
+  title: No examples in annotation example API
+  description: No examples in annotation example API
+  version: 1.0.0
+servers:
+  - url: 'https://localhost:8080'
+paths:
+  /dogs:
+    post:
+      summary: Create a dog
+      operationId: createDog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dog'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dog'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                dog name length:
+                  $ref: '#/components/examples/DogNameBiggerThan50Error'
+                dog name contains numbers:
+                  $ref: '#/components/examples/DogNameContainsNumbersError'
+                dog age negative:
+                  $ref: '#/components/examples/DogAgeNegativeError'
+
+components:
+  schemas:
+    Dog:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 50
+          pattern: '^[a-zA-Z]+$'
+        age:
+          type: integer
+          format: int32
+          minimum: 0
+      example:
+        name: 'Rex'
+        age: 5
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  examples:
+    DogNameBiggerThan50Error:
+      value:
+        code: 400
+        message: Name can't be more than 50 characters long
+    DogNameContainsNumbersError:
+      value:
+        code: 400
+        message: Name must contain only letters
+    DogAgeNegativeError:
+      value:
+        code: 400
+        message: Age must be greater than or equal to 0
