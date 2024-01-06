@@ -5,6 +5,7 @@
  */
 package org.example.openapi.api;
 
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import org.example.openapi.dto.DogDto;
 import org.example.openapi.dto.ErrorDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -44,7 +45,15 @@ public interface DogsApi {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = DogDto.class))
             }),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))
+                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class),
+                        examples = {
+                        @ExampleObject(name = "DogNameBiggerThan50Error",
+                                value = "{\"code\": 400, \"message\": \"name size must be between 0 and 50\"}"),
+                        @ExampleObject(name = "DogNameContainsNumbersError",
+                                value = "{\"code\": 400, \"message\": \"Name must contain only letters\"}"),
+                        @ExampleObject(name = "DogAgeNegativeError",
+                                value = "{\"code\": 400, \"message\": \"age must be greater than or equal to 0\"}")
+                })
             })
         }
     )
