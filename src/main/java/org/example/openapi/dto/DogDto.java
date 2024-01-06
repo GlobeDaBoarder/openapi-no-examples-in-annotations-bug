@@ -1,13 +1,14 @@
 package org.example.openapi.dto;
 
-import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import jakarta.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
-
-
 import jakarta.annotation.Generated;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+
+import java.util.Objects;
 
 /**
  * DogDto
@@ -29,9 +30,9 @@ public class DogDto {
   /**
    * Get name
    * @return name
-  */
-  @Pattern(regexp = "^[a-zA-Z]+$", message = "Name must contain only letters") @Size(max = 50)
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED, example = "Rex")
+   */
+  @Pattern(regexp = "^[a-zA-Z]+$", message="Name must contain only letters") @Size(max = 50)
+  @Schema(name = "name", example = "Rex", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -50,9 +51,9 @@ public class DogDto {
    * Get age
    * minimum: 0
    * @return age
-  */
-  @Min(value = 0)
-  @Schema(name = "age", requiredMode = Schema.RequiredMode.NOT_REQUIRED, example = "5")
+   */
+  @Min(0)
+  @Schema(name = "age", example = "5", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("age")
   public Integer getAge() {
     return age;
@@ -72,7 +73,7 @@ public class DogDto {
     }
     DogDto dog = (DogDto) o;
     return Objects.equals(this.name, dog.name) &&
-        Objects.equals(this.age, dog.age);
+            Objects.equals(this.age, dog.age);
   }
 
   @Override

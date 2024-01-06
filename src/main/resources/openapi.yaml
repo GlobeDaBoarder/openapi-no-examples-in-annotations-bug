@@ -45,13 +45,18 @@ components:
           type: string
           maxLength: 50
           pattern: '^[a-zA-Z]+$'
+          x-pattern-message: Name must contain only letters
+          example: 'Rex'
         age:
           type: integer
           format: int32
           minimum: 0
-      example:
-        name: 'Rex'
-        age: 5
+          example: 5
+# NOTE: not picked up by the generator
+# TODO: consider adding support for this
+#      example:
+#        name: 'Rex'
+#        age: 5
     Error:
       type: object
       properties:

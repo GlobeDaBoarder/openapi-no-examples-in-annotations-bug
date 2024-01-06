@@ -67,7 +67,7 @@
                         <configuration>
                             <filesets>
                                 <fileset>
-                                    <directory>${project.basedir}/src/main/java/org/example/generated</directory>
+                                    <directory>${project.basedir}/src/main/java/org/example/openapi/generated</directory>
                                 </fileset>
                             </filesets>
                         </configuration>
@@ -102,17 +102,17 @@
                 </configuration>
 
                 <executions>
-<!--                    <execution>-->
-<!--                        <id>generate-with-template</id>-->
-<!--                        <phase>generate-sources</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <inputSpec>src/main/resources/openapi.yaml</inputSpec>-->
-<!--&lt;!&ndash;                            <templateDirectory>src/main/resources/templates</templateDirectory>&ndash;&gt;-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
+                    <execution>
+                        <id>generate-with-template</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>src/main/resources/openapi.yaml</inputSpec>
+<!--                            <templateDirectory>src/main/resources/templates</templateDirectory>-->
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
