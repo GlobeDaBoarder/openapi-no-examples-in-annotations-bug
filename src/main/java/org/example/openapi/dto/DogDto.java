@@ -30,8 +30,8 @@ public class DogDto {
    * Get name
    * @return name
   */
-  @Pattern(regexp = "^[a-zA-Z]+$", message = "Name must contain only letters") @Size(max = 50, message = "Name can't be more than 50 characters long")
-  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Pattern(regexp = "^[a-zA-Z]+$", message = "Name must contain only letters") @Size(max = 50)
+  @Schema(name = "name", requiredMode = Schema.RequiredMode.NOT_REQUIRED, example = "Rex")
   @JsonProperty("name")
   public String getName() {
     return name;
@@ -51,8 +51,8 @@ public class DogDto {
    * minimum: 0
    * @return age
   */
-  @Min(value = 0, message = "Age must be greater than or equal to 0")
-  @Schema(name = "age", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @Min(value = 0)
+  @Schema(name = "age", requiredMode = Schema.RequiredMode.NOT_REQUIRED, example = "5")
   @JsonProperty("age")
   public Integer getAge() {
     return age;

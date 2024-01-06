@@ -64,7 +64,7 @@ components:
     DogNameBiggerThan50Error:
       value:
         code: 400
-        message: Name can't be more than 50 characters long
+        message: name size must be between 0 and 50
     DogNameContainsNumbersError:
       value:
         code: 400
@@ -72,4 +72,4 @@ components:
     DogAgeNegativeError:
       value:
         code: 400
-        message: Age must be greater than or equal to 0
+        message: age must be greater than or equal to 0
